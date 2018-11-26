@@ -21,6 +21,7 @@ import com.perpetual.ivor.jokefactory.DisplayJokeActivity;
 public class MainActivityFragment extends Fragment {
     ProgressBar progressBar = null;
     public String loadedJoke = null;
+    public boolean testFlag = false;
 
     public MainActivityFragment() {
     }
@@ -60,13 +61,15 @@ public class MainActivityFragment extends Fragment {
         new EndpointAsyncTask().execute(this);
     }
 
-    public void launchDisplayJokeActivity(){
-        Context context = getActivity();
-        Intent intent = new Intent(context, DisplayJokeActivity.class);
-        intent.putExtra(context.getString(R.string.JOKE_ENVELOPE), loadedJoke);
-        //Toast.makeText(context, loadedJoke, Toast.LENGTH_LONG).show();
-        context.startActivity(intent);
-        progressBar.setVisibility(View.GONE);
+    public void launchDisplayJokeActivity() {
+        if (!testFlag) {
+            Context context = getActivity();
+            Intent intent = new Intent(context, DisplayJokeActivity.class);
+            intent.putExtra(context.getString(R.string.JOKE_ENVELOPE), loadedJoke);
+            //Toast.makeText(context, loadedJoke, Toast.LENGTH_LONG).show();
+            context.startActivity(intent);
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
 
