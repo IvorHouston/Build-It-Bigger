@@ -14,6 +14,8 @@ buildscript {
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
+    flavorDimensions "default"
+
 
     dexOptions {
         javaMaxHeapSize "4g"
@@ -33,6 +35,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+            versionName "1.0­free"
+        }
+
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+            versionName "1.0­paid"
         }
     }
 }
